@@ -1,13 +1,16 @@
-
 import React, { useContext } from 'react';
-import { AppContext } from '../context/AppContext';
+
+import { AppContext, currencies } from '../context/AppContext';
+
+
 
 const Budget = () => {
-    const { budget } = useContext(AppContext);
+    const { budget, currency } = useContext(AppContext);
+    const currencySymbol = currencies.find(c => c.code === currency).symbol;
 
     return (
         <div className='alert alert-secondary'>
-            <span>Budget: £{budget}</span>
+            <span>Budget: {currencySymbol}{budget}</span>
         </div>
     );
 };

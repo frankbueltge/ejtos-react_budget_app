@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { AppProvider } from './context/AppContext';
@@ -7,15 +7,24 @@ import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseList from './components/ExpenseList';
 import AllocationForm from './components/AllocationForm';
 import RemainingBudget from './components/Remaining';
+import CurrencySelector from './components/CurrencySelector';
+
 
 const App = () => {
+    const [selectedCurrency, setSelectedCurrency] = useState('GBP');
+
+    const handleCurrencyChange = (currency) => {
+        setSelectedCurrency(currency);
+    };
+
     return (
-        <AppProvider>
+        <AppProvider value={{ selectedCurrency, setSelectedCurrency }}>
             <div className='container'>
                 <h1 className='mt-3'>Company's Budget Allocation</h1>
+                <CurrencySelector onCurrencyChange={handleCurrencyChange} />
                 <div className='row mt-3'>
                     <div className='col-sm'>
-                        <Budget />
+                    <Budget />
                     </div>
                     <div className='col-sm'>
                         <RemainingBudget />
