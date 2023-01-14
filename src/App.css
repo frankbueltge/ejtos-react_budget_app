@@ -2,6 +2,52 @@
   text-align: center;
 }
 
+    .dropdown {
+        background-color: lightgreen;
+        color: white;
+        width: 100px;
+        border: none;
+        padding: 10px;
+    
+       
+    }
+    .increase{
+      background-color:green;
+      color:white;
+      border-radius: 80%;
+      border: none;
+  }
+  .decrease{
+      background-color:red;
+      color:white;
+      border-radius: 80%;
+      border: none;
+      
+      
+  }
+    .drop {
+        background-color: lightgreen;
+        color: white;
+        width: 300px;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .dropdown option {
+        color: white;
+        background-color: lightgreen;
+        float: right;
+    }
+
+    option {
+        color: white;
+        background-color: lightgreen;
+        
+    }
+
+    
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

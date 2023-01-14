@@ -1,25 +1,32 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
+import '../App.css'
 
-const CurrencySelector = ({ onCurrencyChange }) => {
-    const { currencies, selectedCurrency } = useContext(AppContext);
 
-    const handleChange = (event) => {
-        const currency = event.target.value;
-        onCurrencyChange(currency);
-    };
+
+   
+
+const CurrencySelector = () => {
+    const {state, dispatch} = useContext(AppContext);
+
+    const handleCurrencyChange = (newCurrency) => {
+        dispatch({
+            type: "CHG_CURRENCY",
+            payload: newCurrency
+        });
+    }
 
     return (
-        <div>
-            <select value={selectedCurrency} onChange={handleChange}>
-                {currencies.map((currency) => (
-                    <option key={currency.code} value={currency.code}>
-                        {currency.symbol} {currency.name}
-                    </option>
-                ))}
-            </select>
+        <div className='drop'>
+        <label>Currency:</label>
+        <select className="dropdown" value={state.currency} onChange={(e) => handleCurrencyChange(e.target.value)}> 
+            <option className='opt' value="£">£ Pound</option>
+            <option className='opt' value="$">$ Dollar</option>
+            <option className='opt' value="€">€ Euro</option>
+            <option className='opt' value="₹">₹ Indian Rupee</option>
+        </select>
         </div>
     );
-};
+}
 
 export default CurrencySelector;
